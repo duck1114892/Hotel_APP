@@ -41,7 +41,7 @@ const HotelScreen = ({ navigation }) => {
                             <Link onPress={() => {
                                 switchPage(item._id)
                             }}>
-                                <Image src={`https://hotelbe.zeabur.app/images/default/${item.logo}`} height={100} width={100} borderRadius={20} alt=""></Image>
+                                <Image src={`https://hotelbe.hotelduckgg.click/images/default/${item.logo}`} height={100} width={100} borderRadius={20} alt=""></Image>
                                 <Box style={{ width: "100%", display: "flex", flexDirection: "column", justifyContent: "center", marginLeft: 40 }} >
                                     <Text style={{ fontWeight: "500", fontSize: 15 }}>{item.name}</Text>
                                     <Text style={{ marginTop: 10, color: "gray" }}><Ionicons style={{ paddingLeft: "5%" }} name="location-outline" />{item.address}</Text>

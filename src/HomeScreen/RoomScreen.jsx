@@ -39,7 +39,7 @@ const RoomScreen = ({ navigation }) => {
                             }>
 
                                 <Card key={item._id} style={{ display: 'flex', flexDirection: "row", backgroundColor: "white", borderRadius: 20, marginTop: 10, width: 390 }} >
-                                    <Image src={`https://hotelbe.zeabur.app/images/default/${item.img}`} height={100} width={100} borderRadius={20} alt=""></Image>
+                                    <Image src={`https://hotelbe.hotelduckgg.click/images/default/${item.img}`} height={100} width={100} borderRadius={20} alt=""></Image>
                                     <Box style={{ width: "100%", display: "flex", flexDirection: "column", justifyContent: "center", marginLeft: 40 }} >
                                         <Text style={{ fontWeight: "500", fontSize: 15 }}>{item.name}</Text>
                                         <Text style={{ marginTop: 2, color: "gray" }}><Ionicons style={{ paddingLeft: "5%" }} name="location-outline" />{item.address}</Text>

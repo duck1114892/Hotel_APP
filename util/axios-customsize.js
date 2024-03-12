@@ -2,7 +2,7 @@ import axios from "axios";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Alert } from "react-native";
 
-const baseUrl = 'https://hotelbe.zeabur.app';
+const baseUrl = 'https://hotelbe.hotelduckgg.click';
 
 const instance = axios.create({
     baseURL: baseUrl,

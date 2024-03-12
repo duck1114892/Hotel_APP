@@ -67,7 +67,7 @@ const MainScreen = () => {
                                 <>{
                                     mostRatingHotel.map(item => {
                                         return (<Card style={{ padding: 0, display: 'flex', alignItems: "center", borderRadius: 10 }} key={item._id} marginLeft="2" backgroundColor="white" height={230} width={180}>
-                                            <Image style={{ width: "100%", height: "50%", borderRadius: 10 }} src={`https://hotelbe.zeabur.app/images/default/${item.logo}`} alt=""></Image>
+                                            <Image style={{ width: "100%", height: "50%", borderRadius: 10 }} src={`https://hotelbe.hotelduckgg.click/images/default/${item.logo}`} alt=""></Image>
                                             <Text style={{ fontWeight: "500", fontSize: 15, marginTop: "10%" }}>{item.name}</Text>
                                             <Text style={{ color: "gray", marginTop: "5%", marginBottom: "10%", fontSize: 10 }}><Ionicons style={{ paddingLeft: "5%" }} name="location-outline" />{item.address}</Text>
                                             <AirbnbRating size={15} defaultRating={item.rating} isDisabled showRating={false} ></AirbnbRating>
@@ -86,7 +86,7 @@ const MainScreen = () => {
                                 <>{
                                     bestRoom.map(item => {
                                         return (<Card style={{ padding: 0, display: 'flex', alignItems: "center", borderRadius: 10 }} key={item._id} marginLeft="2" backgroundColor="white" height={230} width={180}>
-                                            <Image style={{ width: "100%", height: "50%", borderRadius: 10 }} src={`https://hotelbe.zeabur.app/images/default/${item.img}`} alt=""></Image>
+                                            <Image style={{ width: "100%", height: "50%", borderRadius: 10 }} src={`https://hotelbe.hotelduckgg.click/images/default/${item.img}`} alt=""></Image>
                                             <Text style={{ fontWeight: "500", fontSize: 15, marginTop: "10%" }}>{item.name}</Text>
                                             <Text style={{ color: "gray", marginTop: "5%", marginBottom: "10%", fontSize: 10 }}><Ionicons style={{ paddingLeft: "5%" }} name="location-outline" />{item.address}</Text>
                                             <Text style={{ color: "rgba(249,109,1,1.00)", fontWeight: "700" }}>{new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(item.price)}</Text>

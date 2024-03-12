@@ -60,7 +60,7 @@ const HotelDetail = ({ route, navigation }) => {
                 setRooms(roomData);
 
                 const imageUrls = hotelResponse.data.slider.map((imageName) => ({
-                    url: `https://hotelbe.zeabur.app/images/default/${imageName}`
+                    url: `https://hotelbe.hotelduckgg.click/images/default/${imageName}`
                 }));
                 setSliderImages(imageUrls);
 

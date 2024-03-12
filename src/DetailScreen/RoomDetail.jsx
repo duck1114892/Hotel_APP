@@ -28,7 +28,7 @@ const RoomDetail = ({ route }) => {
             const res = await getRoomById(id)
             setRoom(res.data)
             const imageUrls = await res.data.slider.map((imageName) => ({
-                url: `https://hotelbe.zeabur.app/images/default/${imageName}`
+                url: `https://hotelbe.hotelduckgg.click/images/default/${imageName}`
 
             }));
             setImg(imageUrls)
@@ -46,7 +46,7 @@ const RoomDetail = ({ route }) => {
             <ScrollView>
                 <View>
                     <Card style={{ backgroundColor: "white", display: "flex", flexDirection: "row" }}>
-                        <Avatar source={{ uri: `https://hotelbe.zeabur.app/images/default/${room?.img || 'khach-san-sam-quang-binh-3-scaled-1706798879828.jpg'}` }} />
+                        <Avatar source={{ uri: `https://hotelbe.hotelduckgg.click/images/default/${room?.img || 'khach-san-sam-quang-binh-3-scaled-1706798879828.jpg'}` }} />
                         <View style={{ marginLeft: 20 }}>
                             <Text style={{ fontWeight: "700", fontSize: 20 }}>{room?.name}</Text>
                             <Text><Ionicons style={{ paddingLeft: "5%" }} name="location-outline" />{room?.address}</Text>

@@ -46,7 +46,7 @@ const UserScreen = () => {
                                 return (
                                     <Center>
                                         <Card key={item._id} style={{ display: 'flex', flex: 1, flexDirection: "row", backgroundColor: "white", borderRadius: 20, marginTop: 10, width: 390 }} >
-                                            <Image src={`https://hotelbe.zeabur.app/images/default/${item?.roomId?.img}`} height={100} width={100} borderRadius={20} alt=""></Image>
+                                            <Image src={`https://hotelbe.hotelduckgg.click/images/default/${item?.roomId?.img}`} height={100} width={100} borderRadius={20} alt=""></Image>
                                             <Box style={{ width: 300, display: "flex", flexDirection: "column", justifyContent: "center", marginLeft: 40 }} >
                                                 <Text style={{ fontWeight: "500", fontSize: 15 }}>{item?.roomId?.name}</Text>
                                                 <Text style={{ color: "rgba(249,109,1,1.00)", marginTop: 2, fontWeight: "700" }}>{new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(item?.total)}</Text>
