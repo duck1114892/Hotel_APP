@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Box, Center, Input, View } from 'native-base';
+import { Box, Center, Input, Text, View } from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
+import exampleData from '../example data/data';
 const HeaderComponent = () => {
     const [searchValue, setSearchValue] = useState('');
 
@@ -14,19 +14,8 @@ const HeaderComponent = () => {
     };
 
     return (
-        <Box backgroundColor="blue.300" height={100} style={{ display: 'flex', justifyContent: 'center' }}>
-            <Center style={{ marginTop: "10%" }}>
-                <Input
-                    placeholder="Tìm Kiếm Khách Sạn"
-                    InputLeftElement={<Ionicons style={{ paddingLeft: '5%' }} name="search" color="gray" size={20} />}
-                    style={{ width: "40%" }}
-                    borderRadius={20}
-                    backgroundColor="white"
-                    value={searchValue}
-                    onChangeText={(text) => setSearchValue(text)}
-                    onSubmitEditing={handleSearch}
-                />
-            </Center>
+        <Box height={10} style={{ display: 'flex', alignItems: 'center' }}>
+
         </Box>
     );
 };

@@ -1,13 +1,15 @@
-import { Badge, Box, Center, Image, ScrollView, View, Card } from "native-base"
+import { Badge, Box, Center, Image, ScrollView, View, Card, Button } from "native-base"
 import { useEffect, useState } from "react"
 import { RefreshControl, Text } from "react-native"
 
-import { useSelector } from "react-redux"
-import { getBooking } from "../../api/api"
+import { useDispatch, useSelector } from "react-redux"
+import { getBooking, logout } from "../../api/api"
+import { logOut } from "../redux/login/action"
 
-const UserScreen = () => {
+const UserScreen = ({ navigation }) => {
     const [booking, setBooking] = useState([])
     const info = useSelector(state => state.loginReducer.user)
+    const dispath = useDispatch()
     const [refreshing, setRefreshing] = useState(false);
     const onRefresh = () => {
         setRefreshing(true);
@@ -15,7 +17,14 @@ const UserScreen = () => {
             setRefreshing(false);
         }, 1000);
     }
-
+    const handleLogout = async () => {
+        const res = await logout()
+        console.log(res)
+        if (res.statusCode === 201) {
+            dispath(logOut())
+            navigation.navigate('Login')
+        }
+    }
     useEffect(() => {
         const getBookingApi = async () => {
             const res = await getBooking()
@@ -31,11 +40,12 @@ const UserScreen = () => {
             <View>
                 <Text style={{ fontWeight: "700", paddingLeft: "5%", marginTop: "5%", color: "rgba(35,93,159,1.00)", fontSize: 20 }}>Thông Tin</Text>
                 <Center>
-                    <Card style={{ backgroundColor: "white", marginTop: 20, height: 60, width: 300 }}>
-                        <View marginLeft={10} style={{}}>
+                    <Card style={{ backgroundColor: "white", height: 60, width: 300, display: 'flex', flexDirection: 'row' }}>
+                        <View >
                             <Text style={{ fontWeight: 800 }}>Email:  <Text style={{ fontWeight: 500 }}>{info.email}</Text> </Text>
                             <Text style={{ fontWeight: 800 }}>Tên: <Text style={{ fontWeight: 500 }}>{info.name}</Text></Text>
                         </View>
+                        <Button onPress={handleLogout} backgroundColor={'red.500'} marginLeft={6} height={7}><Text style={{ color: 'white', fontSize: 10, height: 20 }}>Đăng Xuất</Text></Button>
                     </Card>
                 </Center>
                 <Text style={{ fontWeight: "700", paddingLeft: "5%", marginTop: "5%", color: "rgba(35,93,159,1.00)", fontSize: 20 }}>Booking</Text>

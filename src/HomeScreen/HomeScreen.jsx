@@ -1,4 +1,4 @@
-import { Box, Card, Center, FormControl, Image, ScrollView } from "native-base"
+import { Box, Card, Center, FormControl, Image, Link, ScrollView } from "native-base"
 import { ImageBackground, RefreshControl, Text, View } from "react-native"
 import exampleData from "../example data/data"
 import { useEffect, useState } from "react"
@@ -7,7 +7,8 @@ import { getHotelApi, getRoomList } from "../../api/api";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { AirbnbRating, Rating } from "react-native-ratings";
 
-const MainScreen = () => {
+
+const MainScreen = ({ navigation }) => {
     const [address, setAddress] = useState()
     const [data, setData] = useState()
     const [mostRatingHotel, setMostRatingHotel] = useState([])
@@ -19,6 +20,17 @@ const MainScreen = () => {
             setRefreshing(false);
         }, 100);
     }
+    const switchPageRoom = (e) => {
+        navigation.navigate('RoomDetail', {
+            id: e
+        })
+    }
+    const switchPageHotel = (e) => {
+        navigation.navigate('HotelDetail', {
+            id: e
+        })
+
+    }
     const pickerSelectStyles = {
         inputIOS: {
             fontSize: 16,
@@ -26,10 +38,10 @@ const MainScreen = () => {
             paddingHorizontal: 10,
             borderWidth: 1,
             borderColor: 'gray', // Màu của viền
-            borderRadius: 4,
+            borderRadius: 40,
             color: 'black',
             paddingRight: 30, // to ensure the text is never behind the icon
-            borderRadius: 30
+
         },
         inputAndroid: {
             fontSize: 16,
@@ -66,12 +78,18 @@ const MainScreen = () => {
                             {mostRatingHotel.length === 0 ? <Text>...Loading</Text> : (
                                 <>{
                                     mostRatingHotel.map(item => {
-                                        return (<Card style={{ padding: 0, display: 'flex', alignItems: "center", borderRadius: 10 }} key={item._id} marginLeft="2" backgroundColor="white" height={230} width={180}>
-                                            <Image style={{ width: "100%", height: "50%", borderRadius: 10 }} src={`https://hotelbe.hotelduckgg.click/images/default/${item.logo}`} alt=""></Image>
-                                            <Text style={{ fontWeight: "500", fontSize: 15, marginTop: "10%" }}>{item.name}</Text>
-                                            <Text style={{ color: "gray", marginTop: "5%", marginBottom: "10%", fontSize: 10 }}><Ionicons style={{ paddingLeft: "5%" }} name="location-outline" />{item.address}</Text>
-                                            <AirbnbRating size={15} defaultRating={item.rating} isDisabled showRating={false} ></AirbnbRating>
-                                        </Card>)
+                                        return (
+                                            <Link key={item._id} onPress={
+                                                () => switchPageHotel(item?._id)
+                                            } >
+                                                <Card style={{ padding: 0, display: 'flex', alignItems: "center", borderRadius: 10 }} marginLeft="2" backgroundColor="white" height={230} width={180}>
+                                                    <Image style={{ width: "100%", height: "50%", borderRadius: 10 }} src={`https://hotelbe.hotelduckgg.click/images/default/${item.logo}`} alt=""></Image>
+                                                    <Text style={{ fontWeight: "500", fontSize: 15, marginTop: "10%" }}>{item.name}</Text>
+                                                    <Text style={{ color: "gray", marginTop: "5%", marginBottom: "10%", fontSize: 10 }}><Ionicons style={{ paddingLeft: "5%" }} name="location-outline" />{item.address}</Text>
+                                                    <AirbnbRating size={15} defaultRating={item.rating} isDisabled showRating={false} ></AirbnbRating>
+                                                </Card>
+                                            </Link>
+                                        )
                                     })}</>
                             )}
 
@@ -85,12 +103,18 @@ const MainScreen = () => {
                             {bestRoom.length === 0 ? <Text>...Loading</Text> : (
                                 <>{
                                     bestRoom.map(item => {
-                                        return (<Card style={{ padding: 0, display: 'flex', alignItems: "center", borderRadius: 10 }} key={item._id} marginLeft="2" backgroundColor="white" height={230} width={180}>
-                                            <Image style={{ width: "100%", height: "50%", borderRadius: 10 }} src={`https://hotelbe.hotelduckgg.click/images/default/${item.img}`} alt=""></Image>
-                                            <Text style={{ fontWeight: "500", fontSize: 15, marginTop: "10%" }}>{item.name}</Text>
-                                            <Text style={{ color: "gray", marginTop: "5%", marginBottom: "10%", fontSize: 10 }}><Ionicons style={{ paddingLeft: "5%" }} name="location-outline" />{item.address}</Text>
-                                            <Text style={{ color: "rgba(249,109,1,1.00)", fontWeight: "700" }}>{new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(item.price)}</Text>
-                                        </Card>)
+
+                                        return (
+                                            <Link key={item._id} onPress={
+                                                () => switchPageRoom(item?._id)
+                                            } >
+                                                <Card style={{ padding: 0, display: 'flex', alignItems: "center", borderRadius: 10 }} marginLeft="2" backgroundColor="white" height={230} width={180}>
+                                                    <Image style={{ width: "100%", height: "50%", borderRadius: 10 }} src={`https://hotelbe.hotelduckgg.click/images/default/${item.img}`} alt=""></Image>
+                                                    <Text style={{ fontWeight: "500", fontSize: 15, marginTop: "10%" }}>{item.name}</Text>
+                                                    <Text style={{ color: "gray", marginTop: "5%", marginBottom: "10%", fontSize: 10 }}><Ionicons style={{ paddingLeft: "5%" }} name="location-outline" />{item.address}</Text>
+                                                    <Text style={{ color: "rgba(249,109,1,1.00)", fontWeight: "700" }}>{new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(item.price)}</Text>
+                                                </Card>
+                                            </Link>)
                                     })}</>
                             )}
 
