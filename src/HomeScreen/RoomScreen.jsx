@@ -33,7 +33,7 @@ const RoomScreen = ({ navigation }) => {
             <View>
                 {room.map((item) => {
                     return (
-                        <Center>
+                        <Center key={item._id} >
                             <Link onPress={
                                 () => switchPage(item._id)
                             }>

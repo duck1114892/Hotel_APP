@@ -106,7 +106,7 @@ const HotelDetail = ({ route, navigation }) => {
                 <View>
                     <Slideshow dataSource={sliderImages} />
                     <Card style={{ backgroundColor: "white", display: "flex", flexDirection: "row" }}>
-                        <Avatar source={{ uri: `https://hotelbe.zeabur.app/images/default/${hotelData?.logo || 'khach-san-sam-quang-binh-3-scaled-1706798879828.jpg'}` }} />
+                        <Avatar source={{ uri: `https://hotelbe.hotelduckgg.click/images/default/${hotelData?.logo || 'khach-san-sam-quang-binh-3-scaled-1706798879828.jpg'}` }} />
                         <View style={{ marginLeft: 20 }}>
                             <Text style={{ fontWeight: "700", fontSize: 20 }}>{hotelData?.name}</Text>
                             <Text><Ionicons style={{ paddingLeft: "5%" }} name="location-outline" />{hotelData?.address}</Text>
@@ -120,15 +120,15 @@ const HotelDetail = ({ route, navigation }) => {
                         <View >
                             {rooms.length !== 0 ? (
                                 rooms.map((room) => (
-                                    <Link onPress={
-                                        () => switchPage(room._id)
+                                    <Link key={room?._id} onPress={
+                                        () => switchPage(room?._id)
                                     }>
-                                        <Card key={room._id} style={{ display: 'flex', flexDirection: "row", backgroundColor: "white", borderRadius: 20, marginLeft: 10, marginRight: 10, marginTop: 10 }}>
-                                            <Image source={{ uri: `https://hotelbe.zeabur.app/images/default/${room.img}` }} height={100} width={100} borderRadius={20} alt="" />
+                                        <Card key={room?._id} style={{ display: 'flex', flexDirection: "row", backgroundColor: "white", borderRadius: 20, marginLeft: 10, marginRight: 10, marginTop: 10 }}>
+                                            <Image source={{ uri: `https://hotelbe.hotelduckgg.click/images/default/${room?.img}` }} height={100} width={100} borderRadius={20} alt="" />
                                             <Box style={{ width: "100%", display: "flex", flexDirection: "column", justifyContent: "center", marginLeft: 40 }}>
-                                                <Text style={{ fontWeight: "500", fontSize: 15 }}>{room.name}</Text>
-                                                <Text style={{ marginTop: 2, color: "gray" }}><Ionicons style={{ paddingLeft: "5%" }} name="location-outline" />{room.address}</Text>
-                                                <Text style={{ color: "rgba(249,109,1,1.00)", marginTop: 2, fontWeight: "700" }}>{new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(room.price)}</Text>
+                                                <Text style={{ fontWeight: "500", fontSize: 15 }}>{room?.name}</Text>
+                                                <Text style={{ marginTop: 2, color: "gray" }}><Ionicons style={{ paddingLeft: "5%" }} name="location-outline" />{room?.address}</Text>
+                                                <Text style={{ color: "rgba(249,109,1,1.00)", marginTop: 2, fontWeight: "700" }}>{new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(room?.price)}</Text>
                                             </Box>
                                         </Card>
                                     </Link>
@@ -144,10 +144,10 @@ const HotelDetail = ({ route, navigation }) => {
                     <ScrollView maxHeight={300} nestedScrollEnabled={true}>
                         <View >
                             {rating?.map((item) => {
-                                return (<Center>
-                                    <Card key={item._id} style={{ backgroundColor: "white", marginTop: 10, borderRadius: 20, width: 390 }}>
-                                        <Text style={{ fontWeight: 600 }}>{item.createdBy.email}</Text>
-                                        <Text>{item.comment}</Text>
+                                return (<Center key={item?._id} >
+                                    <Card key={item?._id} style={{ backgroundColor: "white", marginTop: 10, borderRadius: 20, width: 390 }}>
+                                        <Text style={{ fontWeight: 600 }}>{item?.createdBy.email}</Text>
+                                        <Text>{item?.comment}</Text>
                                         <AirbnbRating size={15} defaultRating={item?.rating} isDisabled showRating={false} />
                                     </Card>
                                 </Center>

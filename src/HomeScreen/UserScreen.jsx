@@ -44,7 +44,7 @@ const UserScreen = () => {
                         {
                             booking.map((item) => {
                                 return (
-                                    <Center>
+                                    <Center key={item._id} >
                                         <Card key={item._id} style={{ display: 'flex', flex: 1, flexDirection: "row", backgroundColor: "white", borderRadius: 20, marginTop: 10, width: 390 }} >
                                             <Image src={`https://hotelbe.hotelduckgg.click/images/default/${item?.roomId?.img}`} height={100} width={100} borderRadius={20} alt=""></Image>
                                             <Box style={{ width: 300, display: "flex", flexDirection: "column", justifyContent: "center", marginLeft: 40 }} >
