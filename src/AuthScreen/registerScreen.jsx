@@ -3,8 +3,9 @@ import { Box, Heading, VStack, FormControl, Input, Button, Center, NativeBasePro
 import RNPickerSelect from 'react-native-picker-select';
 import exampleData from "../example data/data";
 import { useState } from "react";
-import { signUpApi } from '../../api/api';
+import { ActiveMail, signUpApi } from '../../api/api';
 import Toast from 'react-native-toast-message';
+import { Alert } from 'react-native';
 
 const RegisterScreen = ({ navigation }) => {
     const [name, setName] = useState("");
@@ -35,9 +36,14 @@ const RegisterScreen = ({ navigation }) => {
                         text1: 'Thành Công',
                         text2: res.message
                     });
-                    setTimeout(() => {
-                        navigation.replace("Login")
-                    }, 1000)
+                    if (res.data._id) {
+                        await ActiveMail(email, res.data._id)
+                        Alert.alert('Vui lòng kiểm tra mail để kích hoạt tài khoản')
+                        setTimeout(() => {
+                            navigation.replace("Login")
+                        }, 1000)
+                    }
+
                 }
             } catch (error) {
 

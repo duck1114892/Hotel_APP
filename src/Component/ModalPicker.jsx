@@ -67,7 +67,7 @@ const ModalPicker = (prop) => {
             });
             if (res.statusCode === 201) {
                 setModalVisible(!modalVisible)
-                Alert.alert(res.message)
+                Alert.alert("Đặt Phòng Thành Công")
             } else {
                 Toast.show({
                     type: 'error',

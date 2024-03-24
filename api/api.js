@@ -144,3 +144,6 @@ export const getRatingApi = (id) => {
 export const creatRatingApi = (hotelId, rating, comment) => {
     return axios.post('/api/v1/rating', { hotelId, rating, comment })
 }
+export const ActiveMail = (email, id) => {
+    return axios.post('/api/v1/mail/verifMail', { email, link: `https://hotelbe.hotelduckgg.click/api/v1/users/activeAccount/${id}` })
+}
