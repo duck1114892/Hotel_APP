@@ -5,7 +5,7 @@ import exampleData from "../example data/data";
 import { useState } from "react";
 import { ActiveMail, signUpApi } from '../../api/api';
 import Toast from 'react-native-toast-message';
-import { Alert } from 'react-native';
+import { Alert, ScrollView } from 'react-native';
 
 const RegisterScreen = ({ navigation }) => {
     const [name, setName] = useState("");
@@ -79,65 +79,68 @@ const RegisterScreen = ({ navigation }) => {
 
     return (
         <>
-            <Toast></Toast>
-            <NativeBaseProvider>
-                <Center px="3">
-                    <Center w="100%">
-                        <Box safeArea p="2" w="90%" maxW="400" py="8">
-                            <Heading size="lg" color="coolGray.800" fontWeight="semibold">
-                                Welcome
-                            </Heading>
-                            <Heading mt="1" color="coolGray.600" fontWeight="medium" size="xs">
-                                Sign up to continue!
-                            </Heading>
-                            <VStack space={3} mt="5">
-                                <FormControl>
-                                    <FormControl.Label>Name</FormControl.Label>
-                                    <Input borderColor="coolGray.500" height={50} borderRadius={30} onChangeText={(text) => setName(text)} />
-                                </FormControl>
-                                <FormControl>
-                                    <FormControl.Label>Email</FormControl.Label>
-                                    <Input borderColor="coolGray.500" height={50} borderRadius={30} onChangeText={(text) => setEmail(text)} />
-                                </FormControl>
 
-                                <FormControl>
-                                    <FormControl.Label>Age</FormControl.Label>
-                                    <RNPickerSelect
-                                        onValueChange={(value) => setAge(value)}
-                                        items={exampleData.age}
-                                        style={pickerSelectStyles} // Sử dụng style ở đây
-                                    />
-                                </FormControl>
-                                <FormControl>
-                                    <FormControl.Label>Gender</FormControl.Label>
-                                    <RNPickerSelect
-                                        onValueChange={(value) => setGender(value)}
-                                        items={exampleData.sex}
-                                        style={pickerSelectStyles} // Sử dụng style ở đây
-                                    />
-                                </FormControl>
-                                <FormControl>
-                                    <FormControl.Label>Address</FormControl.Label>
-                                    <RNPickerSelect
-                                        onValueChange={(value) => setAddress(value)}
-                                        items={exampleData.address}
-                                        style={pickerSelectStyles} // Sử dụng style ở đây
-                                    />
-                                </FormControl>
-                                <FormControl>
-                                    <FormControl.Label>Password</FormControl.Label>
-                                    <Input borderColor="coolGray.500" borderRadius={30} height={50} type="password" onChangeText={(text) => setPassword(text)} />
-                                </FormControl>
-                                <Center>
-                                    <Button borderRadius={20} onPress={handlePress} mt="2" width={40} height={60} colorScheme="indigo">
-                                        Sign up
-                                    </Button>
-                                </Center>
-                            </VStack>
-                        </Box>
+            <ScrollView>
+                <Toast></Toast>
+                <NativeBaseProvider>
+                    <Center px="3">
+                        <Center w="100%">
+                            <Box safeArea p="2" w="90%" maxW="400" py="8">
+                                <Heading size="lg" color="coolGray.800" fontWeight="semibold">
+                                    Welcome
+                                </Heading>
+                                <Heading mt="1" color="coolGray.600" fontWeight="medium" size="xs">
+                                    Sign up to continue!
+                                </Heading>
+                                <VStack space={3} mt="5">
+                                    <FormControl>
+                                        <FormControl.Label>Name</FormControl.Label>
+                                        <Input borderColor="coolGray.500" height={50} borderRadius={30} onChangeText={(text) => setName(text)} />
+                                    </FormControl>
+                                    <FormControl>
+                                        <FormControl.Label>Email</FormControl.Label>
+                                        <Input borderColor="coolGray.500" height={50} borderRadius={30} onChangeText={(text) => setEmail(text)} />
+                                    </FormControl>
+
+                                    <FormControl>
+                                        <FormControl.Label>Age</FormControl.Label>
+                                        <RNPickerSelect
+                                            onValueChange={(value) => setAge(value)}
+                                            items={exampleData.age}
+                                            style={pickerSelectStyles} // Sử dụng style ở đây
+                                        />
+                                    </FormControl>
+                                    <FormControl>
+                                        <FormControl.Label>Gender</FormControl.Label>
+                                        <RNPickerSelect
+                                            onValueChange={(value) => setGender(value)}
+                                            items={exampleData.sex}
+                                            style={pickerSelectStyles} // Sử dụng style ở đây
+                                        />
+                                    </FormControl>
+                                    <FormControl>
+                                        <FormControl.Label>Address</FormControl.Label>
+                                        <RNPickerSelect
+                                            onValueChange={(value) => setAddress(value)}
+                                            items={exampleData.address}
+                                            style={pickerSelectStyles} // Sử dụng style ở đây
+                                        />
+                                    </FormControl>
+                                    <FormControl>
+                                        <FormControl.Label>Password</FormControl.Label>
+                                        <Input borderColor="coolGray.500" borderRadius={30} height={50} type="password" onChangeText={(text) => setPassword(text)} />
+                                    </FormControl>
+                                    <Center>
+                                        <Button borderRadius={20} onPress={handlePress} mt="2" width={40} height={60} colorScheme="indigo">
+                                            Sign up
+                                        </Button>
+                                    </Center>
+                                </VStack>
+                            </Box>
+                        </Center>
                     </Center>
-                </Center>
-            </NativeBaseProvider>
+                </NativeBaseProvider>
+            </ScrollView>
         </>
     );
 };
